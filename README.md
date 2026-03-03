@@ -117,7 +117,7 @@
 - Sophos Endpoint Agent running on the endpoint, tray icon active
 - Device assigned to the correct policy groups
 
-![Agent deployed and protected](./screenshots/01_agent_protected.png)
+![Agent deployed and protected](./screenshots/09_std7_status_protected.png)
 
 > 📸 *Screenshots 1–18: SophosSetup installer, installation progress, Sophos Central device list showing Std7 — Protected*
 
@@ -154,7 +154,7 @@
 - Policy listed as **Active** in Sophos Central
 - Threat Graph recording validated in subsequent EICAR test (Task 6A)
 
-![Threat Protection policy active](./screenshots/02_threat_protection_policy.png)
+![Threat Protection policy active](./screenshots/27_threat_protection_policy_active.png)
 
 > 📸 *Screenshots 19–27: Threat Protection policy settings — all toggles visible, Policy Active badge shown*
 
@@ -188,7 +188,7 @@
 
 **What I learned:** Applying Web Control at the **user level** (not device level) means the policy follows the user account regardless of which machine they log in to. Getting the scope wrong would have left shared machines unprotected — this was a non-obvious but important configuration detail.
 
-![Web Control blocking instagram.com](./screenshots/03_web_control_blocked.png)
+![Web Control blocking instagram.com](./screenshots/34_instagram_blocked_blogs_forums.png)
 
 > 📸 *Screenshots 20–38: Web Control policy settings, all category actions visible, browser showing "Website Blocked" for instagram.com, youtube.com, giris.turkiye.gov.tr*
 
@@ -219,7 +219,7 @@
 | utorrent.com | ❌ Blocked — Peer-to-Peer category |
 | youtube.com | ❌ Blocked — Policy prohibits access |
 
-![TeamViewer blocked by Sophos agent](./screenshots/04_teamviewer_blocked.png)
+![TeamViewer blocked by Sophos agent](./screenshots/37_teamviewer_download_blocked.png)
 
 > 📸 *Screenshots 20–38: App Control policy settings, controlled app list (TeamViewer 3/3, uTorrent 2/2), TeamViewer block notification from Sophos agent, uTorrent website blocked*
 
@@ -255,7 +255,7 @@
 
 **What I learned:** The Sophos agent notification read: *"Transfer of file 'Hassas Bilgiler Test.txt' was blocked."* Enforcement was consistent across both Brave and Opera — the policy operates at the **OS/agent level**, not as a browser extension. Switching browsers cannot bypass it. This was particularly relevant from a GDPR compliance perspective.
 
-![DLP blocking file upload](./screenshots/05_dlp_blocked_upload.png)
+![DLP blocking file upload](./screenshots/54_sophos_agent_file_blocked_notification.png)
 
 > 📸 *Screenshots 39–57: DLP policy creation, Germany templates selected, file rule settings, blocked upload attempts, Sophos agent notification, DLP events log (22 blocked events)*
 
@@ -283,7 +283,7 @@
 
 Seeing not just *that* a file was blocked, but *how* the browser process led to the detection, made the value of EDR over traditional AV concrete — the full attack chain is visible, not just the final alert.
 
-![EICAR blocked and Threat Graph](./screenshots/06_eicar_threat_graph.png)
+![EICAR blocked and Threat Graph](./screenshots/63_threat_graphs_dashboard_128.png)
 
 > 📸 *Screenshots 58–76: EICAR download interrupted, compressed folder error, Sophos agent notification (Mal/Generic-S), Threat Graphs dashboard (128+ entries), EICAR threat detail — Std7/Brave/Cleaned*
 
@@ -305,7 +305,7 @@ Seeing not just *that* a file was blocked, but *how* the browser process led to 
 | App Control event logged | ✅ "Application detected" in Events |
 | TeamViewer on same device | ❌ Still blocked (different action) |
 
-![App Control — Monitor vs Block](./screenshots/07_monitor_vs_block.png)
+![App Control — Monitor vs Block](./screenshots/78_opera_allowed_monitor_mode.png)
 
 > 📸 *Screenshots 77–90: App Control violations report — STD7: TeamViewer blocked, Opera allowed. Events log showing "Application detected" for Opera alongside blocked TeamViewer.*
 
@@ -331,7 +331,7 @@ Seeing not just *that* a file was blocked, but *how* the browser process led to 
 
 **What I learned:** Isolation severs the network connection while keeping the Sophos console channel alive so investigation can continue remotely. Understanding that this management channel staying open is **intentional design** — not a gap — was an important learning from this task.
 
-![Device isolation confirmation](./screenshots/08_device_isolation.png)
+![Device isolation confirmation](./screenshots/73_isolation_request_sent.png)
 
 > 📸 *Screenshots 72–76: Isolate computer dialog, "Request to isolate the computer sent" confirmation banner, endpoint status showing reconnecting state*
 
@@ -368,7 +368,7 @@ Seeing not just *that* a file was blocked, but *how* the browser process led to 
 
 **Analysis:** All autorun entries correspond to legitimate applications. The Sophos agent appearing in the startup registry confirmed it's correctly configured to persist across reboots — which I verified intentionally as a sanity check.
 
-![Live Discover query results](./screenshots/09_live_discover_results.png)
+![Live Discover query results](./screenshots/81_live_discover_22_categories_465_queries.png)
 
 > 📸 *Screenshots 77–95: Live Discover interface (22 categories, 465 queries), network connections results, startup registry query results*
 
@@ -391,7 +391,7 @@ Seeing not just *that* a file was blocked, but *how* the browser process led to 
 
 **What I noticed:** Skype.com appeared as the top blocked site (17 visits) under "Streaming Media" — not under communication tools. This showed me that category-based blocking can produce unexpected results, and that **ongoing policy review** is as important as the initial configuration.
 
-![Sophos Central reports dashboard](./screenshots/10_reports_dashboard.png)
+![Sophos Central reports dashboard](./screenshots/104_reports_dashboard_overview.png)
 
 > 📸 *Screenshots 77–108: Policy violators report, top blocked sites, DLP events (22), malware chart (193), app control violations, Threat Graphs (145)*
 
