@@ -4,74 +4,88 @@
 [![Platform](https://img.shields.io/badge/Platform-cloud.sophos.com-blue?style=for-the-badge)](https://cloud.sophos.com)
 [![Status](https://img.shields.io/badge/Status-Completed-brightgreen?style=for-the-badge)](https://github.com/firatcanbekar/sophos-edr-lab)
 [![Tasks](https://img.shields.io/badge/Tasks_Completed-9%2F9-success?style=for-the-badge)](https://github.com/firatcanbekar/sophos-edr-lab)
-[![Zero Trust](https://img.shields.io/badge/Framework-Zero--Trust%20Endpoint-orange?style=for-the-badge)](https://github.com/firatcanbekar/sophos-edr-lab)
+[![Framework](https://img.shields.io/badge/Framework-Zero--Trust%20Endpoint-orange?style=for-the-badge)](https://github.com/firatcanbekar/sophos-edr-lab)
 
-> **A hands-on endpoint security project** built on Sophos Intercept X and the Sophos Central cloud console, simulating real-world endpoint security workflows in a controlled lab environment. Covers the full endpoint security lifecycle: agent deployment, custom threat protection, zero-trust application control, data loss prevention, threat simulation, incident containment, and proactive threat hunting with Live Query (OSQuery).
+> A **hands-on endpoint security lab** built using **Sophos Intercept X with EDR** and the **Sophos Central cloud console** to understand how enterprise endpoint protection platforms operate in practice.
 
-> 📄 **[View Full Presentation (PDF)](./Zero_Trust_Endpoint_Portfolio_FIRATCAN.pdf)** — slide-by-slide walkthrough of all phases with screenshots and architecture diagrams.
-
----
-
-## 📋 Table of Contents
-
-- [Project Overview](#-project-overview)
-- [Lab Architecture](#-lab-architecture)
-- [Technology Stack](#-technology-stack)
-- [Tasks Completed](#-tasks-completed)
-  - [Task 1 — Agent Deployment](#task-1--agent-deployment)
-  - [Task 2 — Threat Protection Policy](#task-2--threat-protection-policy)
-  - [Task 3 — Web Control Policy](#task-3--web-control-policy)
-  - [Task 4 — Application Control Policy](#task-4--application-control-policy)
-  - [Task 5 — Data Loss Prevention (DLP)](#task-5--data-loss-prevention-dlp)
-  - [Task 6A — Malware Simulation: EICAR Test](#task-6a--malware-simulation-eicar-test)
-  - [Task 6B — Detect vs. Block: Policy Behavior](#task-6b--detect-vs-block-policy-behavior)
-  - [Task 7 — Incident Response: Device Isolation](#task-7--incident-response-device-isolation)
-  - [Task 8 — Proactive Threat Hunting: Live Discover](#task-8--proactive-threat-hunting-live-discover)
-  - [Task 9 — Log Analysis & Reporting](#task-9--log-analysis--reporting)
-- [Key Security Principles](#-key-security-principles)
-- [Skills Demonstrated](#-skills-demonstrated)
-- [Lessons Learned](#-lessons-learned)
-- [How to Reproduce This Lab](#-how-to-reproduce-this-lab)
+📄 **[View Full Presentation (PDF)](./Zero_Trust_Endpoint_Portfolio_FIRATCAN.pdf)**
 
 ---
 
-## 🧭 Project Overview
+# ✅ Quick Summary
 
-|  |  |
+This repository demonstrates a **hands-on endpoint security lab** where multiple security controls were configured, tested, and validated.
+
+Key outcomes:
+
+- Designed **custom endpoint security policies** (Threat Protection, Web Control, Application Control, DLP)
+- Applied policies with correct **scope separation (User vs Device)**
+- Validated behavior using **Sophos Central logs, alerts, and endpoint notifications**
+- Performed **malware simulation (EICAR)** and analyzed results via **Threat Graph**
+- Simulated **incident response workflow** using **Admin Isolation**
+- Conducted **endpoint threat hunting** using **Live Discover (OSQuery)**
+- Reviewed **security reports and policy violation dashboards**
+
+> This project reflects **applied learning in a controlled lab environment** and does not represent production deployment.
+
+---
+
+# 📋 Table of Contents
+
+- Project Overview
+- Lab Architecture
+- Technology Stack
+- Tasks Completed
+- Security Principles Applied
+- Skills Demonstrated
+- Lessons Learned
+- How to Reproduce This Lab
+- Screenshots
+- Author
+
+---
+
+# 🧭 Project Overview
+
+| Category | Description |
 |---|---|
-| **What I built** | A structured hands-on lab built to understand how enterprise endpoint security platforms operate in practice — covering policy design, zero-trust controls, DLP, threat simulation, incident response, and threat hunting. |
-| **Why** | To build practical, verifiable experience with enterprise EDR platforms — learning through doing, not just reading. |
-| **How validated** | Every task was verified through Sophos Central logs, agent notifications, endpoint behavior, Live Discover query results, and report dashboards. No task is marked complete without evidence. |
-| **Key skills** | Sophos Central policy management, custom policy creation, DLP, Application Control, Live Query (OSQuery), Threat Graph analysis, incident response workflows |
-| **Environment** | Sophos Central cloud console (cloud.sophos.com) — managed endpoint: **Std7** (Windows). Policy prefix: **FiratCan Bekar** |
-| **Skill level** | Beginner → Intermediate |
-| **Goal** | Understand EDR workflows, policy design, and evidence-based validation in a real platform |
+| What I built | A hands-on endpoint security lab simulating real-world EDR workflows |
+| Goal | Understand policy behavior, validation, and investigation workflows |
+| Platform | Sophos Central (cloud.sophos.com) |
+| Endpoint | Std7 (Windows) |
+| Skill level | Beginner → Intermediate |
+| Validation | Evidence via logs, alerts, reports, endpoint behavior |
 
 ---
 
-## 🏗 Lab Architecture
+# 🏗 Lab Architecture
 
 ```text
-┌─────────────────────────────────────────────────────────┐
-│             Sophos Central (cloud.sophos.com)            │
-│                   Management Console                     │
-└────────────┬──────────────┬───────────────┬─────────────┘
-             │              │               │
-    ┌────────▼───────┐  ┌───▼────────┐  ┌──▼──────────────┐
-    │ Threat         │  │ Web Control│  │  App Control     │
-    │ Protection     │  │ (User)     │  │  (Device)        │
-    │ • Deep Learning│  │ • Category │  │  • TeamViewer    │
-    │ • CryptoGuard  │  │   filtering│  │  • uTorrent      │
-    │ • Runtime Prot │  │ • URL block│  │  Block/Monitor   │
-    └────────────────┘  └────────────┘  └──────────────────┘
-             │
-    ┌────────▼───────────────────────────┐
-    │         Managed Endpoint           │
-    │              Std7                  │
-    │  Windows — SophosSetup v1.23       │
-    │  Sophos Intercept X Agent          │
-    │  Status: Protected ✅              │
-    └────────────────────────────────────┘
+┌────────────────────────────────────────────┐
+│           Sophos Central Cloud             │
+│        (Management & Security Console)     │
+└───────────────┬───────────────┬────────────┘
+                │               │
+        ┌───────▼──────┐ ┌──────▼────────┐
+        │ Threat        │ │ Web Control   │
+        │ Protection    │ │ (User Policy) │
+        │ CryptoGuard   │ │ URL Filtering │
+        │ Exploit Prot  │ │ Category Ctrl │
+        └───────────────┘ └───────────────┘
+                │
+        ┌───────▼────────┐
+        │ Application     │
+        │ Control         │
+        │ TeamViewer      │
+        │ uTorrent        │
+        └───────────────┬─┘
+                        │
+                ┌───────▼─────────┐
+                │ Managed Endpoint │
+                │ Windows Std7     │
+                │ Sophos Agent     │
+                 Status:Protected ✅
+                └──────────────────┘     
 ```
 
 | Component | Details |
