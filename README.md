@@ -1,5 +1,7 @@
 # 🛡️ Hands-On Sophos Intercept X EDR Lab — Policy Design & Threat Validation
 
+Hands-on cybersecurity lab focused on endpoint protection, threat detection, and security policy validation using Sophos Intercept X EDR.
+
 [![Sophos](https://img.shields.io/badge/Sophos-Intercept%20X%20EDR-0066CC?style=for-the-badge&logo=sophos&logoColor=white)](https://www.sophos.com)
 [![Platform](https://img.shields.io/badge/Platform-cloud.sophos.com-blue?style=for-the-badge)](https://cloud.sophos.com)
 [![Status](https://img.shields.io/badge/Status-Completed-brightgreen?style=for-the-badge)](https://github.com/firatcanbekar/sophos-edr-lab)
@@ -15,6 +17,8 @@
 # ✅ Quick Summary
 
 This repository demonstrates a **hands-on endpoint security lab** where multiple security controls were configured, tested, and validated.
+
+Lab focus: endpoint protection, policy validation, and threat investigation workflows.
 
 Key outcomes:
 
@@ -32,16 +36,16 @@ Key outcomes:
 
 # 📋 Table of Contents
 
-- Project Overview
-- Lab Architecture
-- Technology Stack
-- Tasks Completed
-- Security Principles Applied
-- Skills Demonstrated
-- Lessons Learned
-- How to Reproduce This Lab
-- Screenshots
-- Author
+- [Project Overview](#project-overview)
+- [Lab Architecture](#lab-architecture)
+- [Technology Stack](#technology-stack)
+- [Tasks Completed](#tasks-completed)
+- [Key Security Principles Applied](#key-security-principles-applied)
+- [Skills Demonstrated](#skills-demonstrated)
+- [Lessons Learned](#lessons-learned)
+- [How to Reproduce This Lab](#how-to-reproduce-this-lab)
+- [Screenshots](#screenshots)
+- [Author](#author)
 
 ---
 
@@ -80,11 +84,11 @@ Key outcomes:
         │ uTorrent        │
         └───────────────┬─┘
                         │
-                ┌───────▼─────────┐
+                ┌──────────────────┐
                 │ Managed Endpoint │
                 │ Windows Std7     │
                 │ Sophos Agent     │
-                 Status:Protected ✅
+                │ Status: Protected│
                 └──────────────────┘     
 ```
 
@@ -191,7 +195,7 @@ Key outcomes:
 **Policy Name:** `Web Control-FiratCan Bekar` | **Applied to:** Users — FiratcanBekar, STD7Std
 
 **Category Configuration:**
-
+Lab focus: endpoint protection, policy validation, and threat investigation workflows.
 | Category | Action |
 |---|---|
 | Business / Computing & Internet / Education / Search Engines | ✅ Allow |
