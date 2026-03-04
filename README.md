@@ -430,6 +430,7 @@ Seeing not just *that* a file was blocked, but *how* the browser process led to 
 | Policy violators | STD7\Std — 72 visits to blocked categories |
 | Top blocked site | skype.com — 17 visits (Streaming Media category) |
 | App Control | TeamViewer + uTorrent blocked / Opera monitored |
+| Weekly Web Control Report | Generated from Logs & Reports — blocked web attempts, policy violators, top blocked sites |
 
 **What I noticed:** Skype.com appeared as the top blocked site (17 visits), classified under "Streaming Media" by the Sophos category database — not under communication tools as expected. This showed me that category-based blocking can produce unexpected results, and that **ongoing policy review** is as important as the initial configuration. Correlating results across malware, DLP, web, and app control reports in a single view demonstrated how cross-layer enforcement works in practice — each policy layer contributes events that together paint the full picture of endpoint activity.
 
@@ -543,7 +544,7 @@ DLP and Web Control operate at the agent level — enforcement was consistent ac
 | 01–18 | SophosSetup installation, agent status, device enrollment |
 | 19–27 | Threat Protection policy — all settings |
 | 28–32 | Web Control policy — category actions |
-| 33–38 | App Control + Web Control validation tests (TeamViewer 3/3, uTorrent 2/2, blocked URLs) |
+| 33–38 | App Control policy settings, TeamViewer 3/3, uTorrent 2/2, TeamViewer installer blocked |
 | 39–57 | DLP policy creation, Germany templates, upload blocks |
 | 58–76 | EICAR test, Threat Graph (128 entries), device isolation |
 | 77–95 | Live Discover results, app control report, DLP events (22), malware chart (193) |
