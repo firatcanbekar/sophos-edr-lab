@@ -232,7 +232,6 @@
 | Test | Result |
 |---|---|
 | TeamViewer_Setup_x64.exe | ❌ Windows access error + Sophos agent notification |
-| TeamViewer QuickSupport | ❌ Blocked — Remote management tool category |
 | uTorrent (process execution) | ❌ Blocked — File sharing (P2P) category |
 
 > *Note: Web-based blocking of utorrent.com and youtube.com was validated under Task 3 (Web Control Policy). Application Control operates at the process/execution level — it prevents applications from running, independently of web category filtering.*
@@ -241,7 +240,7 @@
 
 ![TeamViewer blocked by Sophos agent](./screenshots/37_teamviewer_download_blocked.png)
 
-> 📸 *Screenshots 33–38: App Control policy settings, controlled app list (TeamViewer 3/3, uTorrent 2/2), TeamViewer block notification from Sophos agent, uTorrent website blocked*
+> 📸 *Screenshots 33–38: App Control policy settings, controlled app list (TeamViewer 3/3, uTorrent 2/2), TeamViewer installer blocked — Windows access error + Sophos agent notification*
 
 <br>
 
