@@ -202,7 +202,7 @@
 
 ![Web Control blocking instagram.com](./screenshots/34_instagram_blocked_blogs_forums.png)
 
-> 📸 *Screenshots 28–38: Web Control policy settings, all category actions visible, browser showing "Website Blocked" for instagram.com, youtube.com, giris.turkiye.gov.tr*
+> 📸 *Screenshots 28–32: Web Control policy settings, all category actions visible, browser showing "Website Blocked" for instagram.com, youtube.com, giris.turkiye.gov.tr*
 
 <br>
 
@@ -302,7 +302,7 @@
 | Threat Graph | ✅ Generated |
 
 **Threat Graph — What I observed:**
-- **Root Cause:** Brave Browser (`brave.exe`)
+- **Root Process:** `brave.exe` (Brave Browser)
 - **Beacon:** `unconfirmed_858544.crdownload`
 - **Detected:** Jan 12, 2026 — 10:12 PM
 - **Process tree:** `brave.exe` → child download process → temporary file creation → registry key reads → blocked by Sophos agent
@@ -432,7 +432,7 @@ Seeing not just *that* a file was blocked, but *how* the browser process led to 
 | Top blocked site | skype.com — 17 visits (Streaming Media category) |
 | App Control | TeamViewer + uTorrent blocked / Opera monitored |
 
-**What I noticed:** Skype.com appeared as the top blocked site (17 visits) under "Streaming Media" — not under communication tools. This showed me that category-based blocking can produce unexpected results, and that **ongoing policy review** is as important as the initial configuration. Correlating results across malware, DLP, web, and app control reports in a single view demonstrated how cross-layer enforcement works in practice — each policy layer contributes events that together paint the full picture of endpoint activity.
+**What I noticed:** Skype.com appeared as the top blocked site (17 visits), classified under "Streaming Media" by the Sophos category database — not under communication tools as expected. This showed me that category-based blocking can produce unexpected results, and that **ongoing policy review** is as important as the initial configuration. Correlating results across malware, DLP, web, and app control reports in a single view demonstrated how cross-layer enforcement works in practice — each policy layer contributes events that together paint the full picture of endpoint activity.
 
 <br>
 
