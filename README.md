@@ -8,7 +8,7 @@
 
 > **A hands-on endpoint security project** built on Sophos Intercept X and the Sophos Central cloud console, simulating real-world endpoint security workflows in a controlled lab environment. Covers the full endpoint security lifecycle: agent deployment, custom threat protection, zero-trust application control, data loss prevention, threat simulation, incident containment, and proactive threat hunting with Live Query (OSQuery).
 
-> 📄 **[View Full Presentation (PDF)](./Zero_Trust_Endpoint_Portfolio_FIRATCAN.pdf)** — slide-by-slide walkthrough of all phases with screenshots and architecture diagrams.
+> 📄 **[View Full Presentation (PDF)](./Zero_Trust_Endpoint_Architecture.pdf)** — slide-by-slide walkthrough of all phases with screenshots and architecture diagrams.
 
 ---
 
@@ -44,6 +44,8 @@
 | **How validated** | Every task was verified through Sophos Central logs, agent notifications, endpoint behavior, Live Discover query results, and report dashboards. No task is marked complete without evidence. |
 | **Key skills** | Sophos Central policy management, custom policy creation, DLP, Application Control, Live Query (OSQuery), Threat Graph analysis, incident response workflows |
 | **Environment** | Sophos Central cloud console (cloud.sophos.com) — managed endpoint: **Std7** (Windows). Policy prefix: **FiratCan Bekar** |
+| **Skill level** | Beginner → Intermediate |
+| **Goal** | Understand EDR workflows, policy design, and evidence-based validation in a real platform |
 
 ---
 
@@ -103,7 +105,7 @@
 
 ---
 
-### Task 1 — Agent Deployment
+### Task 1 — Agent Deployment ✅ | Verified
 
 **Goal:** Install the Sophos Endpoint agent on a Windows workstation and verify the device is protected and visible in the Sophos Central console.
 
@@ -117,13 +119,17 @@
 - Sophos Endpoint Agent running on the endpoint, tray icon active
 - Device assigned to the correct policy groups
 
+<br>
+
 ![Agent deployed and protected](./screenshots/09_std7_status_protected.png)
 
 > 📸 *Screenshots 1–18: SophosSetup installer, installation progress, Sophos Central device list showing Std7 — Protected*
 
+<br>
+
 ---
 
-### Task 2 — Threat Protection Policy
+### Task 2 — Threat Protection Policy ✅ | Verified
 
 **Goal:** Create a custom Threat Protection policy with comprehensive settings covering malware defense, ransomware protection, and runtime behavior monitoring.
 
@@ -148,19 +154,23 @@
 | Auto-clean malware + Threat Graph | ✅ Enabled |
 | Policy Status | **Active** |
 
-**What I learned:** Setting CryptoGuard to **"Terminate process"** instead of just alerting means ransomware is stopped before file encryption begins — not just detected after the fact. Understanding the difference between detection and prevention settings was one of the key practical lessons from this task.
+**What I learned:** Setting CryptoGuard to **"Terminate process"** instead of just alerting means ransomware is stopped before file encryption begins — not just detected after the fact. The Threat Graph generated during the EICAR test (Task 6A) later revealed how this policy maps to a real process tree: root executable → child processes → registry traces → file activity. Understanding the difference between detection and prevention settings was one of the key practical lessons from this task.
 
 **Verification:**
 - Policy listed as **Active** in Sophos Central
 - Threat Graph recording validated in subsequent EICAR test (Task 6A)
 
+<br>
+
 ![Threat Protection policy active](./screenshots/27_threat_protection_policy_active.png)
 
 > 📸 *Screenshots 19–27: Threat Protection policy settings — all toggles visible, Policy Active badge shown*
 
+<br>
+
 ---
 
-### Task 3 — Web Control Policy
+### Task 3 — Web Control Policy ✅ | Verified
 
 **Goal:** Create a custom Web Control policy to restrict access to non-business web categories and block data exfiltration via web channels.
 
@@ -179,22 +189,26 @@
 
 **Validation Tests:**
 
-| URL | Result |
-|---|---|
-| youtube.com | ✅ Blocked (Streaming) |
-| instagram.com | ✅ Blocked (Blogs & Forums) |
-| giris.turkiye.gov.tr | ✅ Blocked (Government) |
-| facebook.com | ✅ Blocked (Blogs & Forums) |
+| URL | Category | Result |
+|---|---|---|
+| youtube.com | Streaming Media | 🚫 Blocked |
+| instagram.com | Blogs & Forums | 🚫 Blocked |
+| giris.turkiye.gov.tr | Government | 🚫 Blocked |
+| facebook.com | Blogs & Forums | 🚫 Blocked |
 
 **What I learned:** Applying Web Control at the **user level** (not device level) means the policy follows the user account regardless of which machine they log in to. Getting the scope wrong would have left shared machines unprotected — this was a non-obvious but important configuration detail.
 
+<br>
+
 ![Web Control blocking instagram.com](./screenshots/34_instagram_blocked_blogs_forums.png)
 
-> 📸 *Screenshots 20–38: Web Control policy settings, all category actions visible, browser showing "Website Blocked" for instagram.com, youtube.com, giris.turkiye.gov.tr*
+> 📸 *Screenshots 28–38: Web Control policy settings, all category actions visible, browser showing "Website Blocked" for instagram.com, youtube.com, giris.turkiye.gov.tr*
+
+<br>
 
 ---
 
-### Task 4 — Application Control Policy
+### Task 4 — Application Control Policy ✅ | Verified
 
 **Goal:** Create a custom Application Control policy to block unauthorized remote access and peer-to-peer file sharing tools, and validate enforcement at the OS level.
 
@@ -211,6 +225,8 @@
 
 **Why block TeamViewer?** Remote management tools like TeamViewer are frequently abused in social engineering scenarios — an attacker poses as IT support and convinces a user to install it. Blocking at the agent level prevents execution regardless of user permissions. This was one of the more eye-opening tasks in terms of understanding **Shadow IT risk**.
 
+**Why monitor Opera instead of blocking it?** Before enforcing a block organization-wide, the correct workflow is to first observe whether an application is actively used and what activity it generates. Opera was set to Monitor mode to establish a usage baseline — only after reviewing the logged events would a block decision be made. This is how policy rollout works in practice.
+
 **Validation Tests:**
 
 | Test | Result |
@@ -219,13 +235,17 @@
 | utorrent.com | ❌ Blocked — Peer-to-Peer category |
 | youtube.com | ❌ Blocked — Policy prohibits access |
 
+<br>
+
 ![TeamViewer blocked by Sophos agent](./screenshots/37_teamviewer_download_blocked.png)
 
-> 📸 *Screenshots 20–38: App Control policy settings, controlled app list (TeamViewer 3/3, uTorrent 2/2), TeamViewer block notification from Sophos agent, uTorrent website blocked*
+> 📸 *Screenshots 33–38: App Control policy settings, controlled app list (TeamViewer 3/3, uTorrent 2/2), TeamViewer block notification from Sophos agent, uTorrent website blocked*
+
+<br>
 
 ---
 
-### Task 5 — Data Loss Prevention (DLP)
+### Task 5 — Data Loss Prevention (DLP) ✅ | Verified
 
 **Goal:** Create a custom DLP policy to prevent sensitive files containing PII from being uploaded through browsers, email, messaging, or cloud storage.
 
@@ -255,13 +275,17 @@
 
 **What I learned:** The Sophos agent notification read: *"Transfer of file 'Hassas Bilgiler Test.txt' was blocked."* Enforcement was consistent across both Brave and Opera — the policy operates at the **OS/agent level**, not as a browser extension. Switching browsers cannot bypass it. This was particularly relevant from a GDPR compliance perspective.
 
+<br>
+
 ![DLP blocking file upload](./screenshots/54_sophos_agent_file_blocked_notification.png)
 
 > 📸 *Screenshots 39–57: DLP policy creation, Germany templates selected, file rule settings, blocked upload attempts, Sophos agent notification, DLP events log (22 blocked events)*
 
+<br>
+
 ---
 
-### Task 6A — Malware Simulation: EICAR Test
+### Task 6A — Malware Simulation: EICAR Test ✅ | Verified
 
 **Goal:** Validate the real-time malware protection engine using the industry-standard EICAR test file and confirm automatic detection, quarantine, and cleanup.
 
@@ -279,17 +303,22 @@
 - **Root Cause:** Brave Browser (`brave.exe`)
 - **Beacon:** `unconfirmed_858544.crdownload`
 - **Detected:** Jan 12, 2026 — 10:12 PM
+- **Process tree:** `brave.exe` → child download process → temporary file creation → registry key reads → blocked by Sophos agent
 - Registry key reads, temporary file spawns, and child process activity all mapped visually
 
 Seeing not just *that* a file was blocked, but *how* the browser process led to the detection, made the value of EDR over traditional AV concrete — the full attack chain is visible, not just the final alert.
+
+<br>
 
 ![EICAR blocked and Threat Graph](./screenshots/63_threat_graphs_dashboard_128.png)
 
 > 📸 *Screenshots 58–76: EICAR download interrupted, compressed folder error, Sophos agent notification (Mal/Generic-S), Threat Graphs dashboard (128+ entries), EICAR threat detail — Std7/Brave/Cleaned*
 
+<br>
+
 ---
 
-### Task 6B — Detect vs. Block: Policy Behavior
+### Task 6B — Detect vs. Block: Policy Behavior ✅ | Verified
 
 **Goal:** Understand the difference between Block and Monitor modes in Application Control by setting Opera to Monitor, verifying it runs, and confirming the detection event is logged.
 
@@ -305,13 +334,17 @@ Seeing not just *that* a file was blocked, but *how* the browser process led to 
 | App Control event logged | ✅ "Application detected" in Events |
 | TeamViewer on same device | ❌ Still blocked (different action) |
 
+<br>
+
 ![App Control — Monitor vs Block](./screenshots/78_opera_allowed_monitor_mode.png)
 
 > 📸 *Screenshots 77–90: App Control violations report — STD7: TeamViewer blocked, Opera allowed. Events log showing "Application detected" for Opera alongside blocked TeamViewer.*
 
+<br>
+
 ---
 
-### Task 7 — Incident Response: Device Isolation
+### Task 7 — Incident Response: Device Isolation ✅ | Verified
 
 **Goal:** Simulate an incident response scenario by administratively isolating the compromised endpoint from all network traffic while keeping Sophos Central management access available.
 
@@ -329,15 +362,19 @@ Seeing not just *that* a file was blocked, but *how* the browser process led to 
 
 **Console:** *"Request to isolate the computer sent."* | Endpoint status: **Reconnecting...**
 
-**What I learned:** Isolation severs the network connection while keeping the Sophos console channel alive so investigation can continue remotely. Understanding that this management channel staying open is **intentional design** — not a gap — was an important learning from this task.
+**What I learned:** Isolation severs the network connection while keeping the Sophos console channel alive so investigation can continue remotely. Understanding that this management channel staying open is **intentional design** — not a gap — was an important learning from this task. After isolation, investigation workflows continue over the management channel: log collection, threat graph review, and alert triage can all proceed without physically accessing the machine.
+
+<br>
 
 ![Device isolation confirmation](./screenshots/73_isolation_request_sent.png)
 
 > 📸 *Screenshots 72–76: Isolate computer dialog, "Request to isolate the computer sent" confirmation banner, endpoint status showing reconnecting state*
 
+<br>
+
 ---
 
-### Task 8 — Proactive Threat Hunting: Live Discover
+### Task 8 — Proactive Threat Hunting: Live Discover ✅ | Verified
 
 **Goal:** Use Sophos Live Discover (OSQuery-based) to actively query the endpoint for suspicious persistence mechanisms and anomalous network behavior.
 
@@ -352,7 +389,7 @@ Seeing not just *that* a file was blocked, but *how* the browser process led to 
 | C:\Windows\System... | 60243–60244 | 443 | System process — expected |
 | C:\Program Files\... | 60720–60751 | 443 / 80 | Browser/update services — expected |
 
-**Analysis:** All connections on ports 443/80 from known system paths. No unexpected processes or non-standard ports. Clean baseline established.
+**Analysis:** All connections were on ports 443/80 — standard HTTPS and HTTP — originating from known Windows system paths and browser directories. No unexpected processes, no non-standard ports, no outbound connections to unusual IP ranges. Ports 443/80 from system paths represent normal network behavior; anything else (unusual ports, unknown executable paths, or outbound connections to non-CDN IPs) would warrant deeper investigation. Clean baseline established.
 
 ---
 
@@ -366,15 +403,19 @@ Seeing not just *that* a file was blocked, but *how* the browser process led to 
 | **Sophos Agent** | HKEY_LOCAL_MACHINE\...\Run | Expected ✅ |
 | Windows Defender | HKEY_LOCAL_MACHINE | Expected |
 
-**Analysis:** All autorun entries correspond to legitimate applications. The Sophos agent appearing in the startup registry confirmed it's correctly configured to persist across reboots — which I verified intentionally as a sanity check.
+**Analysis:** All autorun entries correspond to legitimate applications. The Sophos agent appearing in the startup registry confirmed it's correctly configured to persist across reboots — which I verified intentionally as a sanity check. No unknown executables, renamed system binaries, or suspicious persistence keys were found.
+
+<br>
 
 ![Live Discover query results](./screenshots/81_live_discover_22_categories_465_queries.png)
 
 > 📸 *Screenshots 77–95: Live Discover interface (22 categories, 465 queries), network connections results, startup registry query results*
 
+<br>
+
 ---
 
-### Task 9 — Log Analysis & Reporting
+### Task 9 — Log Analysis & Reporting ✅ | Verified
 
 **Goal:** Aggregate and analyze all security events generated during the lab across malware detections, DLP violations, web policy enforcement, and application control findings.
 
@@ -389,11 +430,15 @@ Seeing not just *that* a file was blocked, but *how* the browser process led to 
 | Top blocked site | skype.com — 17 visits (Streaming Media category) |
 | App Control | TeamViewer + AnyDesk blocked / Opera monitored |
 
-**What I noticed:** Skype.com appeared as the top blocked site (17 visits) under "Streaming Media" — not under communication tools. This showed me that category-based blocking can produce unexpected results, and that **ongoing policy review** is as important as the initial configuration.
+**What I noticed:** Skype.com appeared as the top blocked site (17 visits) under "Streaming Media" — not under communication tools. This showed me that category-based blocking can produce unexpected results, and that **ongoing policy review** is as important as the initial configuration. Correlating results across malware, DLP, web, and app control reports in a single view demonstrated how cross-layer enforcement works in practice — each policy layer contributes events that together paint the full picture of endpoint activity.
+
+<br>
 
 ![Sophos Central reports dashboard](./screenshots/104_reports_dashboard_overview.png)
 
-> 📸 *Screenshots 77–108: Policy violators report, top blocked sites, DLP events (22), malware chart (193), app control violations, Threat Graphs (145)*
+> 📸 *Screenshots 96–108: Policy violators report, top blocked sites, DLP events (22), malware chart (193), app control violations, Threat Graphs (145)*
+
+<br>
 
 ---
 
@@ -420,18 +465,30 @@ DLP and Web Control operate at the agent level — enforcement was consistent ac
 
 > *These skills were developed and validated in a controlled lab environment. This project reflects applied learning rather than production deployment experience.*
 
+### Core EDR & Endpoint Skills
+
 | Domain | Specific Skills |
 |---|---|
 | **EDR Administration** | Sophos Central policy management, device enrollment, alert triage |
 | **Threat Protection** | Deep Learning, CryptoGuard (ransomware), AMSI, exploit mitigations, runtime protection |
-| **Web Security** | Category-based URL filtering, data loss channel control, user-level policy scoping |
 | **Application Control** | Zero-trust application allow/block lists, P2P and remote tool mitigation, Monitor vs Block modes |
+| **Web Security** | Category-based URL filtering, data loss channel control, user-level policy scoping |
 | **Data Loss Prevention** | Content matching rules, Germany GDPR-aligned templates, cross-browser transfer blocking |
-| **Threat Simulation** | EICAR AV test, malware simulation, real-time detection verification |
-| **Incident Response** | Admin device isolation, alert-to-action workflow |
+
+### Analysis & Investigation
+
+| Domain | Specific Skills |
+|---|---|
+| **Threat Simulation** | EICAR AV test, threat graph validation, infection chain observation |
 | **Threat Hunting** | OSQuery-based live endpoint querying, network connection analysis, registry persistence auditing |
-| **Log Analysis** | Event log review, DLP event correlation, app control violation reports, web policy reporting |
 | **Threat Intelligence** | Threat Graph root cause tracing, attack chain visualization |
+| **Log Analysis** | Event log review, DLP event correlation, app control violation reports, web policy reporting |
+| **Incident Response** | Admin device isolation, alert-to-action workflow, post-isolation investigation continuity |
+
+### Security Strategy & Compliance
+
+| Domain | Specific Skills |
+|---|---|
 | **Security Principles** | Zero Trust, Defence in Depth, Least Privilege, policy lifecycle management |
 | **Compliance Context** | German data protection templates (GDPR-aligned DLP rules) |
 
@@ -456,6 +513,8 @@ DLP and Web Control operate at the agent level — enforcement was consistent ac
 
 6. **Logs reveal what policies actually do — not just what they're configured to do.**
    Skype appearing as the top blocked site under "Streaming Media" was unexpected. A policy review would need to address that. Logs are where theory meets reality.
+
+*This lab reflects a mindset of continuous learning and practical validation, not production deployment experience. Every finding was evidence-based — no task was marked complete without a verifiable result in Sophos Central.*
 
 ---
 
@@ -482,8 +541,8 @@ DLP and Web Control operate at the agent level — enforcement was consistent ac
 |---|---|
 | 01–18 | SophosSetup installation, agent status, device enrollment |
 | 19–27 | Threat Protection policy — all settings |
-| 28–38 | Web Control policy, category actions, validation tests |
-| 33–38 | App Control — TeamViewer 3/3, uTorrent 2/2, block validation |
+| 28–32 | Web Control policy — category actions |
+| 33–38 | App Control + Web Control validation tests (TeamViewer 3/3, uTorrent 2/2, blocked URLs) |
 | 39–57 | DLP policy creation, Germany templates, upload blocks |
 | 58–76 | EICAR test, Threat Graph (128 entries), device isolation |
 | 77–95 | Live Discover results, app control report, DLP events (22), malware chart (193) |
@@ -494,7 +553,7 @@ DLP and Web Control operate at the agent level — enforcement was consistent ac
 ## 👨‍💼 Author
 
 **Fırat Can Bekar**
-| Cybersecurity Engineer| Endpoint & Network Security | Actively Learning
+| Cybersecurity Enthusiast | Endpoint & Network Security | Actively Learning
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/firatcan-bekar-cyber-security-engineer/)
 [![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=flat-square&logo=github)](https://github.com/firatcanbekar)
