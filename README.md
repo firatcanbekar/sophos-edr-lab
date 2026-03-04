@@ -180,8 +180,8 @@
 
 | Category | Action |
 |---|---|
-| Business / Computing & Internet / Education / Government / Search Engines | ✅ Allow |
-| Finance / Health / Hosting / News / Politics / Philanthropic | 🚫 Block |
+| Business / Computing & Internet / Education / Search Engines | ✅ Allow |
+| Finance / Health / Hosting / News / Politics / Philanthropic / Government | 🚫 Block |
 | Social Networking / Adult / Streaming / Bandwidth / Blogs & Forums | 🚫 Block |
 | Video Content | ⚠️ Warn |
 | Downloads + Web-based Email (Data Loss) | 🚫 Block |
@@ -232,8 +232,10 @@
 | Test | Result |
 |---|---|
 | TeamViewer_Setup_x64.exe | ❌ Windows access error + Sophos agent notification |
-| utorrent.com | ❌ Blocked — Peer-to-Peer category |
-| youtube.com | ❌ Blocked — Policy prohibits access |
+| TeamViewer QuickSupport | ❌ Blocked — Remote management tool category |
+| uTorrent (process execution) | ❌ Blocked — File sharing (P2P) category |
+
+> *Note: Web-based blocking of utorrent.com and youtube.com was validated under Task 3 (Web Control Policy). Application Control operates at the process/execution level — it prevents applications from running, independently of web category filtering.*
 
 <br>
 
