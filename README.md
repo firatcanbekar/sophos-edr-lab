@@ -494,7 +494,7 @@ DLP and Web Control operate at the agent level — enforcement was consistent ac
 ## 👨‍💼 Author
 
 **Fırat Can Bekar**
-| Cybersecurity Enthusiast | Endpoint & Network Security | Actively Learning
+| Cybersecurity Engineer| Endpoint & Network Security | Actively Learning
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/firatcan-bekar-cyber-security-engineer/)
 [![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=flat-square&logo=github)](https://github.com/firatcanbekar)
