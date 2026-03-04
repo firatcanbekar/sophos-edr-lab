@@ -430,7 +430,7 @@ Seeing not just *that* a file was blocked, but *how* the browser process led to 
 | DLP events | 22 blocked (all: Hassas Bilgiler Test.txt) |
 | Policy violators | STD7\Std — 72 visits to blocked categories |
 | Top blocked site | skype.com — 17 visits (Streaming Media category) |
-| App Control | TeamViewer + AnyDesk blocked / Opera monitored |
+| App Control | TeamViewer + uTorrent blocked / Opera monitored |
 
 **What I noticed:** Skype.com appeared as the top blocked site (17 visits) under "Streaming Media" — not under communication tools. This showed me that category-based blocking can produce unexpected results, and that **ongoing policy review** is as important as the initial configuration. Correlating results across malware, DLP, web, and app control reports in a single view demonstrated how cross-layer enforcement works in practice — each policy layer contributes events that together paint the full picture of endpoint activity.
 
@@ -453,7 +453,7 @@ Every application, file transfer, and web request is treated as potentially mali
 Multiple independent layers operate simultaneously — Threat Protection, Web Control, Application Control, DLP, and Live Discover. If one layer is bypassed, the others remain active.
 
 **Monitor Before Block — Policy Lifecycle Awareness**
-Application Control was first tested in Monitor mode (Opera) before enforcing Block (TeamViewer/uTorrent). Observing impact before enforcing is how policies are safely rolled out in practice.
+Application Control was first tested in Monitor mode (Opera) before enforcing Block (TeamViewer). Observing impact before enforcing is how policies are safely rolled out in practice.
 
 **Evidence-First Verification**
 No task was considered complete until Sophos Central logs, agent notifications, or Live Discover results confirmed the expected behavior.
