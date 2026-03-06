@@ -8,7 +8,7 @@
 
 > **A hands-on endpoint security project** built on Sophos Intercept X and the Sophos Central cloud console, simulating real-world endpoint security workflows in a controlled lab environment. Covers the full endpoint security lifecycle: agent deployment, custom threat protection, zero-trust application control, data loss prevention, threat simulation, incident containment, and proactive threat hunting with Live Query (OSQuery).
 
-> 📄 **[View Full Presentation (PDF)](Zero_Trust_Endpoint_Architecture.pdf)** — slide-by-slide walkthrough of all phases with screenshots and architecture diagrams.
+> 📄 **[View Full Presentation (PDF)](Zero_Trust_Endpoint_Portfolio_FIRATCAN.pdf)** — slide-by-slide walkthrough of all phases with screenshots and architecture diagrams.
 
 ---
 
