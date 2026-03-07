@@ -288,9 +288,9 @@
 
 Seeing not just *that* a file was blocked, but *how* the browser process led to the detection, made the value of EDR over traditional AV concrete — the full attack chain is visible, not just the final alert.
 
-[![EICAR blocked and Threat Graph](./screenshots/65_threat_graph_brave_exe_root_cause.png)](./screenshots/65_threat_graph_brave_exe_root_cause.png)
+[![EICAR blocked and Threat Graph](./screenshots/70_youtube_drive_mega_blocked_events.png)](./screenshots/70_youtube_drive_mega_blocked_events.png)
 
-> 📸 *Screenshots 58–76: EICAR download interrupted, compressed folder error, Sophos agent notification (Mal/Generic-S), Threat Graphs dashboard (145 entries), EICAR threat detail — Std7/Brave/Cleaned*
+> 📸 *Screenshots 58–76: EICAR download interrupted, compressed folder error, Sophos agent notification (Mal/Generic-S), Threat Graphs dashboard (128 entries), EICAR threat detail — Std7/Brave/Cleaned*
 
 ---
 
@@ -339,7 +339,7 @@ Seeing not just *that* a file was blocked, but *how* the browser process led to 
 
 [![Device isolation confirmation](./screenshots/73_isolation_request_sent.png)](./screenshots/73_isolation_request_sent.png)
 
-> 📸 *Screenshots 72–76: Isolate computer dialog, "Request to isolate the computer sent" confirmation banner, endpoint status showing reconnecting state*
+> 📸 *Screenshots 71–73: Isolate computer dialog, "Request to isolate the computer sent" confirmation banner, endpoint status showing reconnecting state*
 
 ---
 
@@ -389,7 +389,7 @@ Seeing not just *that* a file was blocked, but *how* the browser process led to 
 | Report | Key Metric |
 |---|---|
 | Malware events | 193 total / all successfully cleaned |
-| Threat Graphs | 145 entries |
+| Threat Graphs | 128 entries |
 | DLP events | 22 blocked (all: Hassas Bilgiler Test.txt) |
 | Policy violators | STD7\Std — 72 visits to blocked categories |
 | Top blocked site | skype.com — 17 visits (Streaming Media category) |
@@ -399,7 +399,7 @@ Seeing not just *that* a file was blocked, but *how* the browser process led to 
 
 [![Sophos Central reports dashboard](./screenshots/104_reports_dashboard_overview.png)](./screenshots/104_reports_dashboard_overview.png)
 
-> 📸 *Screenshots 96–108: Policy violators report, top blocked sites, DLP events (22), malware chart (193), app control violations, Threat Graphs (145)*
+> 📸 *Screenshots 96–108: Policy violators report, top blocked sites, DLP events (22), malware chart (193), app control violations, Threat Graphs (128)*
 
 ---
 
@@ -494,7 +494,7 @@ DLP and Web Control operate at the agent level — enforcement was consistent ac
 | 58–76 | EICAR test, Threat Graph (145 entries), device isolation |
 | 77–79 | App Control violations report, Opera monitor mode event |
 | 80–95 | Live Discover interface, network connections, startup registry results |
-| 96–108 | Policy violator report, top blocked sites, DLP events (22), malware chart (193), Threat Graphs (145) |
+| 96–108 | Policy violator report, top blocked sites, DLP events (22), malware chart (193), Threat Graphs (128) |
 
 ---
 
