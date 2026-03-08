@@ -223,7 +223,7 @@
 
 **What I learned:** The block happens at the OS level — not through a browser or extension filter. Attempting to run `TeamViewer_Setup_x64.exe` resulted in an immediate Windows access error alongside a Sophos desktop notification, confirming enforcement before the installer could execute.
 
-[![TeamViewer blocked by Sophos agent](./screenshots/34_teamviewer_blocked_sophos_notification.png)](./screenshots/34_teamviewer_blocked_sophos_notification.png)
+[![TeamViewer blocked by Sophos agent](./screenshots/34_teamviewer_blocked_notification.png)](./screenshots/34_teamviewer_blocked_notification.png)
 
 > 📸 *Screenshots 33–38: App Control policy settings, controlled app list (TeamViewer 3/3, uTorrent 2/2), TeamViewer block notification from Sophos agent*
 
@@ -259,9 +259,9 @@
 
 **What I learned:** The Sophos agent notification read: *"Transfer of file 'Hassas Bilgiler Test.txt' was blocked."* Enforcement was consistent across both Brave and Opera — the policy operates at the **OS/agent level**, not as a browser extension. Switching browsers cannot bypass it. This was particularly relevant from a GDPR compliance perspective.
 
-[![DLP blocking file upload](./screenshots/54_sophos_agent_file_blocked_notification.png)](./screenshots/54_sophos_agent_file_blocked_notification.png)
+[![DLP blocking file upload](./screenshots/87_dlp_opera_file_transfer_blocked.png)](./screenshots/87_dlp_opera_file_transfer_blocked.png)
 
-> 📸 *Screenshots 39–57, 96–108, 101–105: DLP policy creation, Germany templates selected, file rule configuration (Hassas Bilgiler-FiratCan Bekar), file types & destinations, block transfer action, blocked upload attempts, Sophos agent notification, DLP events log (22 blocked events)*
+> 📸 *Screenshots 36–68 (T5 subset) + 101–105: DLP policy creation, Germany templates selected, file rule configuration (Hassas Bilgiler-FiratCan Bekar), file types & destinations, block transfer action, blocked upload attempts (Google Drive, MediaFire, WeTransfer, file.kiwi, filetransfer.io), Sophos agent notification, DLP events log (22 blocked events)*
 
 ---
 
@@ -288,9 +288,9 @@
 
 Seeing not just *that* a file was blocked, but *how* the browser process led to the detection, made the value of EDR over traditional AV concrete — the full attack chain is visible, not just the final alert.
 
-[![EICAR blocked and Threat Graph](./screenshots/70_eicar_threat_graph_brave_cleaned.png)](./screenshots/70_eicar_threat_graph_brave_cleaned.png)
+[![EICAR blocked and Threat Graph](./screenshots/70_eicar_threat_graph_brave.png)](./screenshots/70_eicar_threat_graph_brave.png)
 
-> 📸 *Screenshots 58–76, 106–107: EICAR download interrupted, compressed folder error, Sophos agent notification (Mal/Generic-S), Threat Graphs dashboard (145 entries), EICAR threat detail — Std7/Brave/Cleaned*
+> 📸 *Screenshots 58–70: EICAR download interrupted, compressed folder error, Sophos agent notification (Mal/Generic-S), Threat Graphs dashboard (128 entries at time of test), EICAR threat detail — Std7/Brave/Cleaned. Screenshots 106–107: Threat Graphs final view (145 entries)*
 
 ---
 
@@ -310,9 +310,9 @@ Seeing not just *that* a file was blocked, but *how* the browser process led to 
 | App Control event logged | ✅ "Application detected" in Events |
 | TeamViewer on same device | ❌ Still blocked (different action) |
 
-[![App Control — Monitor vs Block](./screenshots/84_app_control_violations_report.png)](./screenshots/84_app_control_violations_report.png)
+[![App Control — Monitor vs Block](./screenshots/92_app_ctrl_violations_en.png)](./screenshots/92_app_ctrl_violations_en.png)
 
-> 📸 *Screenshots 77–79: App Control violations report — STD7: TeamViewer blocked, Opera allowed. Events log showing "Application detected" for Opera alongside blocked TeamViewer.*
+> 📸 *Screenshots 84–85, 90–92: App Control violations report — STD7: TeamViewer blocked, Opera allowed. Events log showing "Application detected" for Opera alongside blocked TeamViewer.*
 
 ---
 
@@ -337,7 +337,7 @@ Seeing not just *that* a file was blocked, but *how* the browser process led to 
 
 **What I learned:** Isolation severs the network connection while keeping the Sophos console channel alive so investigation can continue remotely. Understanding that this management channel staying open is **intentional design** — not a gap — was an important learning from this task.
 
-[![Device isolation confirmation](./screenshots/73_rdp_reconnecting_after_isolation.png)](./screenshots/73_rdp_reconnecting_after_isolation.png)
+[![Device isolation confirmation](./screenshots/73_rdp_reconnecting.png)](./screenshots/73_rdp_reconnecting.png)
 
 > 📸 *Screenshots 71–73: Isolate computer dialog, "Request to isolate the computer sent" confirmation banner, endpoint status showing reconnecting state*
 
@@ -374,9 +374,9 @@ Seeing not just *that* a file was blocked, but *how* the browser process led to 
 
 **Analysis:** All autorun entries correspond to legitimate applications. The Sophos agent appearing in the startup registry confirmed it's correctly configured to persist across reboots — which I verified intentionally as a sanity check.
 
-[![Live Discover query results](./screenshots/80_live_discover_query_overview_465.png)](./screenshots/80_live_discover_query_overview_465.png)
+[![Live Discover query results](./screenshots/74_live_discover_465_queries.png)](./screenshots/74_live_discover_465_queries.png)
 
-> 📸 *Screenshots 80–95: Live Discover interface (22 categories, 465 queries), network connections results, startup registry query results*
+> 📸 *Screenshots 74–83: Live Discover interface (22 categories, 465 queries), network connections results, startup registry query results*
 
 ---
 
@@ -397,9 +397,9 @@ Seeing not just *that* a file was blocked, but *how* the browser process led to 
 
 **What I noticed:** Skype.com appeared as the top blocked site (17 visits) under "Streaming Media" — not under communication tools. This showed me that category-based blocking can produce unexpected results, and that **ongoing policy review** is as important as the initial configuration.
 
-[![Sophos Central reports dashboard](./screenshots/89_malware_puas_blocked_chart_193.png)](./screenshots/89_malware_puas_blocked_chart_193.png)
+[![Sophos Central reports dashboard](./screenshots/89_malware_193_chart.png)](./screenshots/89_malware_193_chart.png)
 
-> 📸 *Screenshots 96–108: Policy violators report, top blocked sites, DLP events (22), malware chart (193), app control violations, Threat Graphs (145)*
+> 📸 *Screenshots 88–95, 106–107: DLP events log (22), malware chart (193), app control blocked/allowed, app control violations, DLP violations, top blocked sites, policy violators (STD7\\Std — 72 visits), Threat Graphs final view (145 entries)*
 
 ---
 
@@ -486,17 +486,19 @@ DLP and Web Control operate at the agent level — enforcement was consistent ac
 
 | Range | Content |
 |---|---|
-| 01–13 | SophosSetup installer, device protected status, Threat Protection policy setup |
-| 14–25 | Web Control policy setup (14–20), Threat Protection advanced settings (21–25) |
-| 26–32 | Web Control validation (instagram/youtube blocked), Web Control policy active |
-| 33–38 | Government site blocked, App Control policy setup, DLP policy toggle |
-| 39–57 | DLP policy creation, Germany templates, file rule, upload blocks, DLP events log |
-| 58–70 | EICAR test (58–68), Threat Graphs dashboard 128 entries (69–70) |
-| 71–76 | Device isolation dialog, isolation confirmed, RDP reconnecting, Threat Graphs list |
-| 77–83 | Live Discover network query results, startup registry query & results |
-| 84–100 | Reports: App Control violations, apps blocked/allowed, DLP events (22), malware chart (193), top blocked sites, policy violators |
+| 01–13 | SophosSetup download & installer, device protected status, Threat Protection policy creation & settings |
+| 14–22 | Web Control policy setup: users assigned, settings, block/allow categories, data loss tags |
+| 23–25 | YouTube accessible before block (23), YouTube blocked (24), Add Policy – App Control (25) |
+| 26–35 | Web Control validation: instagram / youtube / giris.turkiye.gov.tr blocked; App Control: Std7 assigned, TeamViewer list, uTorrent list, settings, desktop messaging |
+| 36–51 | DLP policy creation: add policy dialog, toggle on/off, Germany template selection, 5 template rule edits & configs (Person IDs, Bank & Card, Contact Details, Confidential Docs, Personal Sensitive) |
+| 52–55 | DLP test file on desktop, file content in Notepad, Google Drive blocked, MediaFire blocked |
+| 56–68 | EICAR test: eicar.org homepage & download page, save dialog, Mal/Generic-S detected, Sophos events log (threats + blocked URLs); Opera download; WeTransfer / file.kiwi / filetransfer.io DLP upload attempts; EICAR in Opera (virus detected) |
+| 69–73 | Threat Graphs list (128 entries), EICAR threat graph detail (Brave/Cleaned), device isolation dialog, isolation request sent, RDP reconnecting |
+| 74–83 | Live Discover: 465 queries overview, Std7 device selected, network connections query & results (port 443, scores, telemetry), startup registry query & results (Edge/OneDrive/Sophos/Defender), telemetry complete |
+| 84–96 | Reports: App Control violations (TR/EN), apps allowed (TR/EN), DLP Opera file transfer blocked, DLP events log (22), malware & PUAs chart (193), app ctrl blocked/allowed EN, DLP violations, top blocked sites 30d, policy violators (STD7\\Std — 72 visits), top blocked sites 7d (TR) |
+| 97–100 | DLP policy setup continuation: Std7 assigned, toggle off/on, empty rules view |
 | 101–105 | DLP file rule detail: policy creation screen, file rule name & block action, file types selected, all destinations enabled, block transfer + Finish |
-| 106–107 | Threat Graphs — 145 entries (clean view + STD7\Std rows highlighted) |
+| 106–107 | Threat Graphs — 145 entries: overview dashboard + STD7\\Std detail view |
 
 ---
 
