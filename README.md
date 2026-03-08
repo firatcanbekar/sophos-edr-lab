@@ -8,7 +8,7 @@
 
 > **A hands-on endpoint security project** built on Sophos Intercept X and the Sophos Central cloud console, simulating real-world endpoint security workflows in a controlled lab environment. Covers the full endpoint security lifecycle: agent deployment, custom threat protection, zero-trust application control, data loss prevention, threat simulation, incident containment, and proactive threat hunting with Live Query (OSQuery).
 
-> 📄 **[View Full Presentation (PDF)](./Zero_Trust_Endpoint_Architecture.pdf)** — slide-by-slide walkthrough of all phases with screenshots and architecture diagrams.
+> 📄 **[View Full Presentation (PDF)](./Zero_Trust_Endpoint_Portfolio_FIRATCAN.pdf)** — slide-by-slide walkthrough of all phases with screenshots and architecture diagrams.
 
 ---
 
@@ -261,7 +261,7 @@
 
 [![DLP blocking file upload](./screenshots/54_sophos_agent_file_blocked_notification.png)](./screenshots/54_sophos_agent_file_blocked_notification.png)
 
-> 📸 *Screenshots 39–57: DLP policy creation, Germany templates selected, file rule settings, blocked upload attempts, Sophos agent notification, DLP events log (22 blocked events)*
+> 📸 *Screenshots 39–57, 96–108, 101–105: DLP policy creation, Germany templates selected, file rule configuration (Hassas Bilgiler-FiratCan Bekar), file types & destinations, block transfer action, blocked upload attempts, Sophos agent notification, DLP events log (22 blocked events)*
 
 ---
 
@@ -290,7 +290,7 @@ Seeing not just *that* a file was blocked, but *how* the browser process led to 
 
 [![EICAR blocked and Threat Graph](./screenshots/70_eicar_threat_graph_brave_cleaned.png)](./screenshots/70_eicar_threat_graph_brave_cleaned.png)
 
-> 📸 *Screenshots 58–76: EICAR download interrupted, compressed folder error, Sophos agent notification (Mal/Generic-S), Threat Graphs dashboard (128 entries), EICAR threat detail — Std7/Brave/Cleaned*
+> 📸 *Screenshots 58–76, 106–107: EICAR download interrupted, compressed folder error, Sophos agent notification (Mal/Generic-S), Threat Graphs dashboard (145 entries), EICAR threat detail — Std7/Brave/Cleaned*
 
 ---
 
@@ -389,7 +389,7 @@ Seeing not just *that* a file was blocked, but *how* the browser process led to 
 | Report | Key Metric |
 |---|---|
 | Malware events | 193 total / all successfully cleaned |
-| Threat Graphs | 128 entries |
+| Threat Graphs | 145 entries |
 | DLP events | 22 blocked (all: Hassas Bilgiler Test.txt) |
 | Policy violators | STD7\Std — 72 visits to blocked categories |
 | Top blocked site | skype.com — 17 visits (Streaming Media category) |
@@ -399,7 +399,7 @@ Seeing not just *that* a file was blocked, but *how* the browser process led to 
 
 [![Sophos Central reports dashboard](./screenshots/89_malware_puas_blocked_chart_193.png)](./screenshots/89_malware_puas_blocked_chart_193.png)
 
-> 📸 *Screenshots 96–108: Policy violators report, top blocked sites, DLP events (22), malware chart (193), app control violations, Threat Graphs (128)*
+> 📸 *Screenshots 96–108: Policy violators report, top blocked sites, DLP events (22), malware chart (193), app control violations, Threat Graphs (145)*
 
 ---
 
@@ -495,6 +495,8 @@ DLP and Web Control operate at the agent level — enforcement was consistent ac
 | 71–76 | Device isolation dialog, isolation confirmed, RDP reconnecting, Threat Graphs list |
 | 77–83 | Live Discover network query results, startup registry query & results |
 | 84–100 | Reports: App Control violations, apps blocked/allowed, DLP events (22), malware chart (193), top blocked sites, policy violators |
+| 101–105 | DLP file rule detail: policy creation screen, file rule name & block action, file types selected, all destinations enabled, block transfer + Finish |
+| 106–107 | Threat Graphs — 145 entries (clean view + STD7\Std rows highlighted) |
 
 ---
 
