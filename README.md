@@ -121,7 +121,7 @@
 
 [![Agent deployed and protected](./screenshots/03_device_protected_status.png)](./screenshots/03_device_protected_status.png)
 
-> 📸 *Screenshots 1–18: SophosSetup installer, installation progress, Sophos Central device list showing Std7 — Protected*
+> 📸 *Screenshots 01–03: SophosSetup download, installer (v1.23), device protected status confirmed in Sophos Central*
 
 ---
 
@@ -159,7 +159,7 @@
 
 [![Threat Protection policy active](./screenshots/08_live_protection_deep_learning.png)](./screenshots/08_live_protection_deep_learning.png)
 
-> 📸 *Screenshots 19–27: Threat Protection policy settings — all toggles visible, Policy Active badge shown*
+> 📸 *Screenshots 04–19: Threat Protection policy creation, all settings visible (Live Protection, CryptoGuard, Exploit Mitigations, Runtime Protection, AMSI, Adaptive Attack Protection), policy active confirmation*
 
 ---
 
@@ -193,7 +193,7 @@
 
 [![Web Control blocking instagram.com](./screenshots/26_instagram_blocked_blogs_forums.png)](./screenshots/26_instagram_blocked_blogs_forums.png)
 
-> 📸 *Screenshots 28–32: Web Control policy settings, all category actions visible, browser showing "Website Blocked" for instagram.com, youtube.com, giris.turkiye.gov.tr*
+> 📸 *Screenshots 14–28: Web Control policy setup (users assigned, category settings, data loss rules), browser validation — instagram.com, youtube.com, giris.turkiye.gov.tr blocked*
 
 ---
 
@@ -225,7 +225,7 @@
 
 [![TeamViewer blocked by Sophos agent](./screenshots/34_teamviewer_blocked_notification.png)](./screenshots/34_teamviewer_blocked_notification.png)
 
-> 📸 *Screenshots 33–38: App Control policy settings, controlled app list (TeamViewer 3/3, uTorrent 2/2), TeamViewer block notification from Sophos agent*
+> 📸 *Screenshots 25–35: App Control policy setup, TeamViewer list (3/3), uTorrent list (2/2), block settings, desktop messaging, TeamViewer blocked notification, uTorrent P2P blocked*
 
 ---
 
@@ -261,7 +261,7 @@
 
 [![DLP blocking file upload](./screenshots/87_dlp_opera_file_transfer_blocked.png)](./screenshots/87_dlp_opera_file_transfer_blocked.png)
 
-> 📸 *Screenshots 36–68 (T5 subset) + 101–105: DLP policy creation, Germany templates selected, file rule configuration (Hassas Bilgiler-FiratCan Bekar), file types & destinations, block transfer action, blocked upload attempts (Google Drive, MediaFire, WeTransfer, file.kiwi, filetransfer.io), Sophos agent notification, DLP events log (22 blocked events)*
+> 📸 *Screenshots 36–55, 97–105: DLP policy creation, Germany templates selected, file rule configuration (Hassas Bilgiler-FiratCan Bekar), file types & destinations, block transfer action, test file on desktop (Notepad content), blocked upload attempts (Google Drive, MediaFire, WeTransfer, file.kiwi, filetransfer.io), Sophos agent notification, DLP events log (22 blocked events)*
 
 ---
 
@@ -290,7 +290,7 @@ Seeing not just *that* a file was blocked, but *how* the browser process led to 
 
 [![EICAR blocked and Threat Graph](./screenshots/70_eicar_threat_graph_brave.png)](./screenshots/70_eicar_threat_graph_brave.png)
 
-> 📸 *Screenshots 58–70: EICAR download interrupted, compressed folder error, Sophos agent notification (Mal/Generic-S), Threat Graphs dashboard (128 entries at time of test), EICAR threat detail — Std7/Brave/Cleaned. Screenshots 106–107: Threat Graphs final view (145 entries)*
+> 📸 *Screenshots 56–70: EICAR download interrupted, compressed folder access denied, Sophos agent notification (Mal/Generic-S), agent events log (threats cleaned + blocked URLs), Opera download & DLP upload attempts, EICAR in Opera (virus detected), Threat Graphs dashboard (128 entries at time of test), EICAR threat detail — Std7/Brave/Cleaned. Screenshots 106–107: Threat Graphs final view (145 entries)*
 
 ---
 
