@@ -187,13 +187,13 @@
 |---|---|---|
 | youtube.com | ✅ Blocked | Streaming Media |
 | instagram.com | ✅ Blocked | Blogs & Forums |
-| facebook.com | ✅ Blocked | Blogs & Forums |
+| giris.turkiye.gov.tr | ✅ Blocked | Government |
 
 **What I learned:** Applying Web Control at the **user level** (not device level) means the policy follows the user account regardless of which machine they log in to. Getting the scope wrong would have left shared machines unprotected — this was a non-obvious but important configuration detail.
 
-[![Web Control blocking instagram.com](./screenshots/34_instagram_blocked_blogs_forums.png)](./screenshots/34_instagram_blocked_blogs_forums.png)
+[![Web Control blocking instagram.com](./screenshots/26_advanced_settings_exploit_mitigations.png)](./screenshots/26_advanced_settings_exploit_mitigations.png)
 
-> 📸 *Screenshots 28–32: Web Control policy settings, all category actions visible, browser showing "Website Blocked" for instagram.com, youtube.com, facebook.com*
+> 📸 *Screenshots 28–32: Web Control policy settings, all category actions visible, browser showing "Website Blocked" for instagram.com, youtube.com, giris.turkiye.gov.tr*
 
 ---
 
@@ -491,7 +491,7 @@ DLP and Web Control operate at the agent level — enforcement was consistent ac
 | 28–32 | Web Control policy, category actions, validation tests |
 | 33–38 | App Control — TeamViewer 3/3, uTorrent 2/2, block validation |
 | 39–57 | DLP policy creation, Germany templates, upload blocks |
-| 58–76 | EICAR test, Threat Graph (145 entries), device isolation |
+| 58–76 | EICAR test, Threat Graph (128 entries), device isolation |
 | 77–79 | App Control violations report, Opera monitor mode event |
 | 80–95 | Live Discover interface, network connections, startup registry results |
 | 96–108 | Policy violator report, top blocked sites, DLP events (22), malware chart (193), Threat Graphs (128) |
