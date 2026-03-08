@@ -233,7 +233,7 @@
 
 **Goal:** Create a custom DLP policy to prevent sensitive files containing PII from being uploaded through browsers, email, messaging, or cloud storage.
 
-**Policy Name:** `DLP-FiratCan Bekar` | **File Rule:** `Hassas Bilgiler-FiratCan Bekar` | **Applied to:** Device — Std7
+**Policy Name:** `Data Loss Prevention - FiratCan Bekar` | **File Rule:** `Hassas Bilgiler-FiratCan Bekar` | **Applied to:** Device — Std7
 
 **Germany Compliance Templates Applied:**
 
