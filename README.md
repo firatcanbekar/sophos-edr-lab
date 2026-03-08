@@ -486,19 +486,17 @@ DLP and Web Control operate at the agent level — enforcement was consistent ac
 
 | Range | Content |
 |---|---|
-| 01–13 | SophosSetup download & installer, device protected status, Threat Protection policy creation & settings |
-| 14–22 | Web Control policy setup: users assigned, settings, block/allow categories, data loss tags |
-| 23–25 | YouTube accessible before block (23), YouTube blocked (24), Add Policy – App Control (25) |
-| 26–35 | Web Control validation: instagram / youtube / giris.turkiye.gov.tr blocked; App Control: Std7 assigned, TeamViewer list, uTorrent list, settings, desktop messaging |
-| 36–51 | DLP policy creation: add policy dialog, toggle on/off, Germany template selection, 5 template rule edits & configs (Person IDs, Bank & Card, Contact Details, Confidential Docs, Personal Sensitive) |
-| 52–55 | DLP test file on desktop, file content in Notepad, Google Drive blocked, MediaFire blocked |
-| 56–68 | EICAR test: eicar.org homepage & download page, save dialog, Mal/Generic-S detected, Sophos events log (threats + blocked URLs); Opera download; WeTransfer / file.kiwi / filetransfer.io DLP upload attempts; EICAR in Opera (virus detected) |
-| 69–73 | Threat Graphs list (128 entries), EICAR threat graph detail (Brave/Cleaned), device isolation dialog, isolation request sent, RDP reconnecting |
-| 74–83 | Live Discover: 465 queries overview, Std7 device selected, network connections query & results (port 443, scores, telemetry), startup registry query & results (Edge/OneDrive/Sophos/Defender), telemetry complete |
-| 84–96 | Reports: App Control violations (TR/EN), apps allowed (TR/EN), DLP Opera file transfer blocked, DLP events log (22), malware & PUAs chart (193), app ctrl blocked/allowed EN, DLP violations, top blocked sites 30d, policy violators (STD7\\Std — 72 visits), top blocked sites 7d (TR) |
-| 97–100 | DLP policy setup continuation: Std7 assigned, toggle off/on, empty rules view |
-| 101–105 | DLP file rule detail: policy creation screen, file rule name & block action, file types selected, all destinations enabled, block transfer + Finish |
-| 106–107 | Threat Graphs — 145 entries: overview dashboard + STD7\\Std detail view |
+| 01–03 | **T1 — Agent Deployment:** SophosSetup download, installer (v1.23), device protected status in Sophos Central |
+| 04–19 | **T2 — Threat Protection Policy:** policy creation, all settings (Live Protection, CryptoGuard, Exploit Mitigations, Runtime Protection, AMSI, Adaptive Attack Protection), policy active confirmation |
+| 14–28 | **T3 — Web Control Policy:** users assigned, category settings (allow/block/warn), data loss rules, browser validation — instagram.com, youtube.com, giris.turkiye.gov.tr blocked |
+| 25–35 | **T4 — Application Control Policy:** policy setup, TeamViewer list (3/3), uTorrent list (2/2), block settings, desktop messaging, TeamViewer blocked notification, uTorrent P2P blocked |
+| 36–55, 97–105 | **T5 — Data Loss Prevention:** policy creation, Germany template selection, 5 template rule configs (Person IDs, Bank & Card, Contact Details, Confidential Docs, Personal Sensitive), file rule setup, test file on desktop, blocked upload attempts (Google Drive, MediaFire, WeTransfer, file.kiwi, filetransfer.io), Sophos agent notification, DLP events log (22 events) |
+| 56–70 | **T6A — EICAR Malware Simulation:** eicar.org homepage & download page, save dialog, Mal/Generic-S detected, Sophos events log (threats + blocked URLs), Opera download & DLP upload attempts, EICAR in Opera (virus detected), Threat Graphs dashboard (128 entries), EICAR threat detail — Std7/Brave/Cleaned |
+| 71–73 | **T7 — Device Isolation:** isolation dialog, request sent confirmation, RDP reconnecting state |
+| 74–83 | **T8 — Live Discover:** 465 queries overview, Std7 selected, network connections query & results (port 443, scores, telemetry), startup registry query & results (Edge/OneDrive/Sophos/Defender), telemetry complete |
+| 84–85, 90–92 | **T6B — Detect vs. Block:** App Control violations report (TR/EN), apps allowed (TR/EN) — TeamViewer blocked, Opera monitored |
+| 88–95 | **T9 — Log Analysis & Reporting:** DLP events log (22), malware & PUAs chart (193), app ctrl blocked/allowed EN, DLP violations, top blocked sites 30d, policy violators (STD7\\Std — 72 visits), top blocked sites 7d (TR) |
+| 106–107 | **T6A / T9 — Threat Graphs final view:** 145 entries — overview dashboard + STD7\\Std detail |
 
 ---
 
