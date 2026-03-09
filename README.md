@@ -6,7 +6,7 @@
 [![Tasks](https://img.shields.io/badge/Tasks_Completed-9%2F9-success?style=for-the-badge)](https://github.com/firatcanbekar/sophos-edr-lab)
 [![Zero Trust](https://img.shields.io/badge/Framework-Zero--Trust%20Endpoint-orange?style=for-the-badge)](https://github.com/firatcanbekar/sophos-edr-lab)
 
-📝 Read the Full Case Study on Medium — full walkthrough with lessons learned, threat simulation results, and analysis.
+> 📝 **[Read the Full Case Study on Medium](https://firatcanbekar.medium.com/from-firewall-to-endpoint-building-a-hands-on-sophos-intercept-x-edr-lab-881aee5dcec9)** — full walkthrough with lessons learned, threat simulation results, and analysis.
 
 > **A hands-on endpoint security project** built on Sophos Intercept X and the Sophos Central cloud console, simulating real-world endpoint security workflows in a controlled lab environment. Covers the full endpoint security lifecycle: agent deployment, custom threat protection, zero-trust application control, data loss prevention, threat simulation, incident containment, and proactive threat hunting with Live Query (OSQuery).
 
